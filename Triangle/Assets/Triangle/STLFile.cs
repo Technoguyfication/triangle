@@ -37,12 +37,14 @@ class STLFile
 						break;
 
 					case "facet":
-						Facet newFacet = new Facet();
-						newFacet.Normal = ParseVector(lineSplit.Skip(2));	// skip "facet normal"
-						newFacet.Vertices = new Vector3[3];
+						Facet newFacet = new Facet
+						{
+							Normal = ParseVector(lineSplit.Skip(2)),    // skip "facet normal"
+							Vertices = new Vector3[3]
+						};
 
-						// skip "outer loop" line
-						i++;
+						// skip "outer loop" line and move to next line
+						i += 2;
 
 						// get vertices from next three lines
 						int startIndex = i;
