@@ -5,12 +5,13 @@ using System.IO;
 using System;
 using Stopwatch = System.Diagnostics.Stopwatch;
 
+[RequireComponent(typeof(MeshFilter))]
 public class STLTest : MonoBehaviour
 {
 	// Start is called before the first frame update
 	void Start()
 	{
-		string fileName = @"C:\Users\Hayden\Downloads\Filament End Switch.stl";
+		string fileName = @"C:\Users\Hayden\Downloads\Test STL.stl";
 		byte[] fileData = File.ReadAllBytes(fileName);
 		STLFile testFile;
 		Stopwatch sw = new Stopwatch();
@@ -28,6 +29,12 @@ public class STLTest : MonoBehaviour
 		}
 
 		Debug.Log($"Loaded solid \"{testFile.Name}\" with {testFile.Facets.Length} facets in {sw.ElapsedMilliseconds}ms");
+		var mesh = Triangle.CreateMeshFromSTL(testFile);
+		//mesh.RecalculateNormals();
+
+		// get mesh filter and assign mesh
+		MeshFilter mf = GetComponent<MeshFilter>();
+		mf.mesh = mesh;
 	}
 
 	// Update is called once per frame

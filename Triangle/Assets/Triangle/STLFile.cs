@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-class STLFile
+public class STLFile
 {
 	private const string AsciiStartString = "solid";
 
