@@ -16,8 +16,6 @@ public class STLFile
 	{
 		// check if file is ASCII or Binary
 		string asciiFileStart = Encoding.ASCII.GetString(file.Take(AsciiStartString.Length).ToArray());
-
-		// check if file is ascii
 		if (AsciiStartString.Equals(asciiFileStart, StringComparison.InvariantCultureIgnoreCase))
 		{
 			// file is ascii
